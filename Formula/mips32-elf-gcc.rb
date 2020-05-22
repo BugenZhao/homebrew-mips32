@@ -9,6 +9,7 @@ class Mips32ElfGcc < Formula
   depends_on "gmp"
   depends_on "libmpc"
   depends_on "mpfr"
+  depends_on "gnu-sed"
   depends_on "mips32-elf-binutils"
 
   def install
@@ -32,6 +33,7 @@ class Mips32ElfGcc < Formula
     ]
 
     mkdir "build" do
+      ENV['SED']='gsed'
       system "../configure", *args
       system "make", "all-gcc"
       system "make", "install-gcc"
