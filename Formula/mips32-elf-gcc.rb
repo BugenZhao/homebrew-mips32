@@ -33,7 +33,6 @@ class Mips32ElfGcc < Formula
     ]
 
     mkdir "build" do
-      ENV['SED']='gsed'
       system "../configure", *args
       system "make", "all-gcc"
       system "make", "install-gcc"
