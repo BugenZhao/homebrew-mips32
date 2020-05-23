@@ -7,10 +7,17 @@ class Mips32ElfGcc < Formula
   sha256 "b6898a23844b656f1b68691c5c012036c2e694ac4b53a8918d4712ad876e7ea2"
 
   depends_on "gmp"
+  depends_on "isl"
   depends_on "libmpc"
   depends_on "mpfr"
-  depends_on "gnu-sed"
   depends_on "mips32-elf-binutils"
+
+  # bug: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=66032
+  # replace sed with awk
+  patch :p0 do
+    url "https://gcc.gnu.org/bugzilla/attachment.cgi?id=41380"
+    sha256 "8a11bd619c2e55466688e328da00b387d02395c1e8ff4a99225152387a1e60a4"
+  end
 
   def install
     languages = %w[c]
