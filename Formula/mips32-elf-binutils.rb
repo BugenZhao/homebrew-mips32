@@ -9,6 +9,7 @@ class Mips32ElfBinutils < Formula
   def install
     args = [
       "--prefix=#{prefix}",
+      "--disable-multilib",
       "--disable-werror",
       "--disable-nls",
       "--target=mips32-elf"

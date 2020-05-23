@@ -13,7 +13,7 @@ class Mips32ElfGcc < Formula
   depends_on "mips32-elf-binutils"
 
   def install
-    languages = %w[c go]
+    languages = %w[c]
 
     binutils = Formulary.factory "mips32-elf-binutils"
 
@@ -23,12 +23,16 @@ class Mips32ElfGcc < Formula
       "--disable-werror",
       "--disable-nls",
       "--disable-libssp",
+      "--disable-threads",
+      "--disable-shared",
+      "--disable-libstdcxx-pch",
+      "--disable-libgomp",
       "--disable-libmudflap",
       "--disable-multilib",
       "--with-as=#{binutils.bin}/mips32-elf-as",
       "--with-ld=#{binutils.bin}/mips32-elf-ld",
-      "--with-newlib",
       "--without-headers",
+      "--without-isl",
       "--target=mips32-elf"
     ]
 
